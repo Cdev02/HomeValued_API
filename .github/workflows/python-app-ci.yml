@@ -11,18 +11,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SECRET_KEY = ${{secrets.SECRET_KEY}}
-      PGSQL_HOST = ${{secrets.PGSQL_HOST}}
-      PGSQL_USER = ${{secrets.PGSQL_USER}}
-      PGSQL_PASSWORD = ${{secrets.PGSQL_PASSWORD}}
-      PGSQL_DATABASE = ${{secrets.PGSQL_DATABASE}}
-      PGSQL_TABLENAME = ${{secrets.PGSQL_TABLENAME}}
-      SECRET_KEY = ${{secrets.SECRET_KEY}}
-      PGSQL_HOST = ${{secrets.PGSQL_HOST}}
-      PGSQL_USER = ${{secrets.PGSQL_USER}}
-      PGSQL_PASSWORD = ${{secrets.PGSQL_PASSWORD}}
-      PGSQL_DATABASE = ${{secrets.PGSQL_DATABASE}}
-      PGSQL_TABLENAME = ${{secrets.PGSQL_TABLENAME}}
+      SECRET_KEY:${{secrets.SECRET_KEY}}
+      PGSQL_HOST:${{secrets.PGSQL_HOST}}
+      PGSQL_USER:${{secrets.PGSQL_USER}}
+      PGSQL_PASSWORD:${{secrets.PGSQL_PASSWORD}}
+      PGSQL_DATABASE:${{secrets.PGSQL_DATABASE}}
+      PGSQL_TABLENAME:${{secrets.PGSQL_TABLENAME}}
+      SECRET_KEY:${{secrets.SECRET_KEY}}
+      PGSQL_HOST:${{secrets.PGSQL_HOST}}
+      PGSQL_USER:${{secrets.PGSQL_USER}}
+      PGSQL_PASSWORD:${{secrets.PGSQL_PASSWORD}}
+      PGSQL_DATABASE:${{secrets.PGSQL_DATABASE}}
+      PGSQL_TABLENAME:${{secrets.PGSQL_TABLENAME}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11.3
