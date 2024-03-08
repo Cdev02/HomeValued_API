@@ -1,0 +1,7 @@
+__pycache__
+.env
+.gitignore
+.git
+README.md
+requirements.txt
+*.txt
