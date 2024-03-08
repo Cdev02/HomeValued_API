@@ -1,22 +1,27 @@
-HomeValued
-Este repositorio contiene el código fuente de nuestra app web, en el se encuentran los archivos necesarios(Backend y Backup de base de datos) para para el correco funcionamiento y despliegue de nuestra app.
+## HomeValued Inc
 
-Integrantes:
-Carlos Marin
-Leonardo Arce
-Juan Carlos Prada
+This repository contains a first version of HomeValued, that is a project about an application 
+that predicts house prices in Colombia.
 
-Características:
-Evaluar propiedades de finca raiz con las caracteristicas propuestas mediante un modelo de machine learning.
-Acumular tasaciones generadas en las cuales los clientes dieran una valoracion positiva.
 
-Tecnologías utilizadas:
-Python
-Angular
-PostgreSQL
+*Characteristics of the project*:
+- The data collected proceed from both government public datasets and web scrapping real estate pages available in the country.
+- The ETL process is performed in another project, and then the data is served in a feature store (in AWS) in order to perform the MLOps process.
+- The model that we use to predict the prices are linear models. 
+- The input data must pass through a data processing and transformation pipeline before being put into the model.
 
-Guía de código:
+*Tech stack used for the HomeValued Inc API project*
+- Python/Flask
+- PostgreSQL
+- GitHub Actions for CI
+- Docker for containerization and deployment
+
+*Code guide*
 https://pep8.org/
 
-Ambientes de prueba:
-# HomeValued_API
+*Development branch*
+- Dev branch in GitHub repository
+*Test Environment*
+- test_env branch in GitHub repository
+*Production Environment*
+- main branch in GitHub repository
