@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify
 from models.property_model import PropertyModel
 from flask import request
 from models.entities.property import Property
-from decouple import config
 import pickle
 import numpy as np
 from src.utils.validation import validate_data

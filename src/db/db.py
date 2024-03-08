@@ -1,15 +1,15 @@
 import psycopg2
 from psycopg2 import DatabaseError
-from decouple import config
+import os
 
 
 def get_connection():
     try:
         return psycopg2.connect(
-            host=config("PGSQL_HOST"),
-            user=config("PGSQL_USER"),
-            password=config("PGSQL_PASSWORD"),
-            database=config("PGSQL_DATABASE"),
+            host=os.getenv("PGSQL_HOST"),
+            user=os.getenv("PGSQL_USER"),
+            password=os.getenv("PGSQL_PASSWORD"),
+            database=os.getenv("PGSQL_DATABASE"),
         )
     except DatabaseError as db_ex:
         raise db_ex

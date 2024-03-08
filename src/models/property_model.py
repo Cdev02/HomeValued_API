@@ -1,7 +1,6 @@
 from db.db import get_connection
 from .entities.property import Property
 from decouple import config
-import pytest
 
 
 class PropertyModel:
