@@ -17,12 +17,11 @@ jobs:
       PGSQL_PASSWORD:${{secrets.PGSQL_PASSWORD}}
       PGSQL_DATABASE:${{secrets.PGSQL_DATABASE}}
       PGSQL_TABLENAME:${{secrets.PGSQL_TABLENAME}}
-      SECRET_KEY:${{secrets.SECRET_KEY}}
-      PGSQL_HOST:${{secrets.PGSQL_HOST}}
-      PGSQL_USER:${{secrets.PGSQL_USER}}
-      PGSQL_PASSWORD:${{secrets.PGSQL_PASSWORD}}
-      PGSQL_DATABASE:${{secrets.PGSQL_DATABASE}}
-      PGSQL_TABLENAME:${{secrets.PGSQL_TABLENAME}}
+      POSTGRES_DB:${{secrets.POSTGRES_DB}}
+      POSTGRES_USER:${{secrets.POSTGRES_USER}}
+      POSTGRES_PASSWORD:${{POSTGRES_PASSWORD}}
+      POSTGRES_ROOT_PASSWORD:${{POSTGRES_ROOT_PASSWORD}}
+      POSTGRES_PORT:${{POSTGRES_PORT}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11.3
