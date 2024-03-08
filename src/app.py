@@ -3,6 +3,8 @@ from config import config
 from routes import property
 from flask_cors import CORS
 
+import sys
+print(sys.path)
 
 app = Flask(__name__)
 

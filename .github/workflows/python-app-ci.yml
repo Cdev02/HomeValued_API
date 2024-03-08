@@ -9,9 +9,20 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      SECRET_KEY = $${{SECRET_KEY}}
+      PGSQL_HOST = ${{PGSQL_HOST}}
+      PGSQL_USER = ${{PGSQL_USER}}
+      PGSQL_PASSWORD = ${{PGSQL_PASSWORD}}
+      PGSQL_DATABASE = ${{PGSQL_DATABASE}}
+      PGSQL_TABLENAME = ${{PGSQL_TABLENAME}}
+      SECRET_KEY = ${{SECRET_KEY}}
+      PGSQL_HOST = ${{PGSQL_HOST}}
+      PGSQL_USER = ${{PGSQL_USER}}
+      PGSQL_PASSWORD = ${{PGSQL_PASSWORD}}
+      PGSQL_DATABASE = ${{PGSQL_DATABASE}}
+      PGSQL_TABLENAME = ${{PGSQL_TABLENAME}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11.3
@@ -27,7 +38,7 @@ jobs:
         
     - name: Test with pytest
       run: |
-        export PYTHONPATH=$PYTHONPATH:$(pwd)/src/
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
         pip install pytest
         pytest 
 
