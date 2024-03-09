@@ -1,0 +1,7 @@
+.env*
+.env.dev.db
+.vscode
+__pycache__
+gusml.egg-info
+TODO.txt
+.pytest_cache
