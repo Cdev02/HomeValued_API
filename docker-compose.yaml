@@ -5,7 +5,6 @@ services:
     build: ./src
     image: carlosdan2/homevalued_api:latest
     environment:
-      - SECRET_KEY = ${SECRET_KEY}
       - PGSQL_HOST = ${PGSQL_HOST}
       - PGSQL_USER = ${PGSQL_USER}
       - PGSQL_PASSWORD = ${PGSQL_PASSWORD}
