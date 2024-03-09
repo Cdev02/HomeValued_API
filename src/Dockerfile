@@ -7,7 +7,7 @@ ENV APP_USERNAME=dev_cdmr
 ENV APP_WORKING_DIR=/usr/src/HomeValued1
 WORKDIR ${APP_WORKING_DIR}
 
-COPY ./requirements.txt .
+COPY ../requirements.txt .
 
 # RUN groupadd ${APP_USERNAME} && \
 #     useradd -g ${APP_USERNAME} ${APP_USERNAME}
