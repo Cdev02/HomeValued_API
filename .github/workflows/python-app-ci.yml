@@ -3,25 +3,23 @@ name: HomeValued_API_to_test
 on:
   pull_request:
     branches: [ "test_env" ]
-
 permissions:
   contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SECRET_KEY:${{secrets.SECRET_KEY}}
-      PGSQL_HOST:${{secrets.PGSQL_HOST}}
-      PGSQL_USER:${{secrets.PGSQL_USER}}
-      PGSQL_PASSWORD:${{secrets.PGSQL_PASSWORD}}
-      PGSQL_DATABASE:${{secrets.PGSQL_DATABASE}}
-      PGSQL_TABLENAME:${{secrets.PGSQL_TABLENAME}}
-      POSTGRES_DB:${{secrets.POSTGRES_DB}}
-      POSTGRES_USER:${{secrets.POSTGRES_USER}}
-      POSTGRES_PASSWORD:${{secrets.POSTGRES_PASSWORD}}
-      POSTGRES_ROOT_PASSWORD:${{secrets.POSTGRES_ROOT_PASSWORD}}
-      POSTGRES_PORT:${{secrets.POSTGRES_PORT}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      PGSQL_HOST: ${{secrets.PGSQL_HOST}}
+      PGSQL_USER: ${{secrets.PGSQL_USER}}
+      PGSQL_PASSWORD: ${{secrets.PGSQL_PASSWORD}}
+      PGSQL_DATABASE: ${{secrets.PGSQL_DATABASE}}
+      PGSQL_TABLENAME: ${{secrets.PGSQL_TABLENAME}}
+      POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+      POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+      POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+      POSTGRES_ROOT_PASSWORD: ${{secrets.POSTGRES_ROOT_PASSWORD}}
+      POSTGRES_PORT: ${{secrets.POSTGRES_PORT}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11.3
