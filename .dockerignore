@@ -3,5 +3,6 @@ __pycache__
 .gitignore
 .git
 README.md
-requirements.txt
+./src/requirements.txt
 *.txt
+.github/

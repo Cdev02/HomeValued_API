@@ -5,9 +5,10 @@ ENV PYTHONUNBUFFERED 1
 
 ENV APP_USERNAME=dev_cdmr
 ENV APP_WORKING_DIR=/usr/src/HomeValued1
+ENV PYTHONPATH=${PYTHONPATH}:${APP_WORKING_DIR}/
 WORKDIR ${APP_WORKING_DIR}
 
-COPY ../requirements.txt .
+COPY ./requirements.txt .
 
 # RUN groupadd ${APP_USERNAME} && \
 #     useradd -g ${APP_USERNAME} ${APP_USERNAME}
@@ -20,7 +21,7 @@ COPY ../requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN export PYTHONPATH=$PYTHONPATH:$(pwd)
+
 COPY . ./src
 
 CMD ["python", "./src/app.py", "-e", "production"]

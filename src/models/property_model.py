@@ -1,6 +1,6 @@
 from db.db import get_connection
 from .entities.property import Property
-from decouple import config
+import os
 
 
 class PropertyModel:
@@ -76,7 +76,8 @@ class PropertyModel:
 
             with connection.cursor() as cursor:
                 if user_id:
-                    cursor.callproc("GetPropertiesByBarrioAndId", [user_id, barrio])
+                    cursor.callproc("GetPropertiesByBarrioAndId", [
+                                    user_id, barrio])
                 else:
                     cursor.callproc("GetPropertiesByBarrio", [barrio])
                 result_set = cursor.fetchall()
@@ -109,7 +110,7 @@ class PropertyModel:
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute(
-                    f"""INSERT INTO {config('PGSQL_TABLENAME')}(id, barrio, estrato, direccion, nivel_propiedad, antiguedad, area_propiedad, numero_habitaciones, garage, numero_banos, numero_pisos, tipo_cocina, owner) VALUES(%s,%s,%s,%s,%s,%s,
+                    f"""INSERT INTO {os.getenv('PGSQL_TABLENAME')}(id, barrio, estrato, direccion, nivel_propiedad, antiguedad, area_propiedad, numero_habitaciones, garage, numero_banos, numero_pisos, tipo_cocina, owner) VALUES(%s,%s,%s,%s,%s,%s,
                         %s,%s,%s,%s,%s,%s,%s)""",
                     (
                         property.id,
@@ -141,10 +142,10 @@ class PropertyModel:
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                sql = f"""UPDATE {config('PGSQL_TABLENAME')} SET barrio = %s, 
+                sql = f"""UPDATE {os.getenv('PGSQL_TABLENAME')} SET barrio = %s, 
                 estrato = %s, direccion = %s, nivel_propiedad = %s, antiguedad = %s,
                 area_propiedad = %s, numero_habitaciones = %s, garage = %s, numero_banos = %s,
-                numero_pisos = %s, tipo_cocina = %s, owner = %s WHERE {config('PGSQL_TABLENAME')}.id = %s"""
+                numero_pisos = %s, tipo_cocina = %s, owner = %s WHERE {os.getenv('PGSQL_TABLENAME')}.id = %s"""
                 cursor.execute(
                     sql,
                     (
@@ -177,7 +178,7 @@ class PropertyModel:
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                sql = f"DELETE FROM {config('PGSQL_TABLENAME')} WHERE property.id = {property.id}"
+                sql = f"DELETE FROM {os.getenv('PGSQL_TABLENAME')} WHERE property.id = {property.id}"
                 cursor.execute(sql)
                 affected_rows = cursor.rowcount
                 connection.commit()
@@ -198,7 +199,7 @@ class PropertyModel:
 
             with connection.cursor() as cursor:
                 if user_id:
-                    sql = f"""SELECT id, barrio, estrato, direccion, nivel_propiedad, antiguedad, area_propiedad, numero_habitaciones, garage, numero_banos, numero_pisos, tipo_cocina, owner FROM {config("PGSQL_TABLENAME")} WHERE {config("PGSQL_TABLENAME")}.owner = %s AND {config("PGSQL_TABLENAME")}.estrato = %s"""
+                    sql = f"""SELECT id, barrio, estrato, direccion, nivel_propiedad, antiguedad, area_propiedad, numero_habitaciones, garage, numero_banos, numero_pisos, tipo_cocina, owner FROM {os.getenv("PGSQL_TABLENAME")} WHERE {os.getenv("PGSQL_TABLENAME")}.owner = %s AND {os.getenv("PGSQL_TABLENAME")}.estrato = %s"""
                     print(sql)
                     cursor.execute(sql, (user_id, estrato))
                 else:
@@ -209,7 +210,7 @@ class PropertyModel:
                             numero_habitaciones,
                               garage, numero_banos,
                                 numero_pisos, tipo_cocina,
-                                  owner FROM {config("PGSQL_TABLENAME")} WHERE {config("PGSQL_TABLENAME")}.estrato = %s"""
+                                  owner FROM {os.getenv("PGSQL_TABLENAME")} WHERE {os.getenv("PGSQL_TABLENAME")}.estrato = %s"""
                     print(sql)
                     cursor.execute(sql, (estrato))
                 result_set = cursor.fetchall()
