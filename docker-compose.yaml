@@ -5,11 +5,11 @@ services:
     build: ./src
     image: carlosdan2/homevalued_api:latest
     environment:
-      - PGSQL_HOST = ${PGSQL_HOST}
-      - PGSQL_USER = ${PGSQL_USER}
-      - PGSQL_PASSWORD = ${PGSQL_PASSWORD}
-      - PGSQL_DATABASE = ${PGSQL_DATABASE}
-      - PGSQL_TABLENAME = ${PGSQL_TABLENAME}
+      - PGSQL_HOST=${PGSQL_HOST}
+      - PGSQL_USER=${PGSQL_USER}
+      - PGSQL_PASSWORD=${PGSQL_PASSWORD}
+      - PGSQL_DATABASE=${PGSQL_DATABASE}
+      - PGSQL_TABLENAME=${PGSQL_TABLENAME}
     # env_file:
     #   - .env
     depends_on:
