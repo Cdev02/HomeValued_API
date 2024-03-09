@@ -9,7 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SECRET_KEY: ${{secrets.SECRET_KEY}}
       PGSQL_HOST: ${{secrets.PGSQL_HOST}}
       PGSQL_USER: ${{secrets.PGSQL_USER}}
       PGSQL_PASSWORD: ${{secrets.PGSQL_PASSWORD}}
