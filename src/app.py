@@ -2,9 +2,14 @@ from flask import Flask
 from config import config
 from routes import property
 from flask_cors import CORS
-
 import sys
-print(sys.path)
+from pathlib import Path
+
+path_root = Path(__file__).parents[1]
+path_root1 = Path(__file__).parents[0]
+sys.path.append(str(path_root))
+sys.path.append(str(path_root1))
+
 
 app = Flask(__name__)
 

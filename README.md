@@ -20,8 +20,6 @@ that predicts house prices in Colombia.
 https://pep8.org/
 
 *Development branch*
-- Dev branch in GitHub repository
-*Test Environment*
-- test_env branch in GitHub repository
-*Production Environment*
-- main branch in GitHub repository
+- Dev branch in GitHub repository *Development Environment*
+- test_env branch in GitHub repository *Test Environment*
+- main branch in GitHub repository *Production Environment*

@@ -157,3 +157,6 @@ BEGIN
 END
 $$;
 
+INSERT INTO property_user(id, user_name, user_lastname, age, creation_date, job) VALUES (1, 'Carlos', 'Marin', 22, TO_DATE('1/04/2024', 'DD/MM/YYYY'), 'Engineer');
+INSERT INTO property (id, barrio, estrato, direccion, nivel_propiedad, antiguedad, area_propiedad, numero_habitaciones, garage, numero_banos, numero_pisos, tipo_cocina, owner) VALUES (1, 'Laureles', 5, 'Cll 33', 1, 10, 85.6, 3, false, 2, 1, 'integral', 1);
+
