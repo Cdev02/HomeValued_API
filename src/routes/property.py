@@ -47,9 +47,10 @@ def get_properties_by_barrio():
 # post methods
 @main.route("/add", methods=["POST"])
 def add_property():
-    data = request.json
+    data = request.get_json()
     try:
-        if validate_data(data) == True:
+        if validate_data(data["nivel_propiedad"], data["numero_banos"], data["numero_pisos"], data["antiguedad"], data["area_propiedad"],
+                         data["barrio"], data["direccion"], data["estrato"], data["tipo_cocina"], data["garage"]) == True:
             prop = Property(
                 data["id"],
                 data["barrio"],
