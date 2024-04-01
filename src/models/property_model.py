@@ -1,5 +1,5 @@
 from db.db import get_connection
-from .entities.property import Property
+from models.entities.property import Property
 import os
 
 
@@ -35,6 +35,7 @@ class PropertyModel:
             connection.close()
             return properties
         except Exception as ex:
+            print("Este es el error al solicitar todos los registros: ")
             raise Exception(ex)
 
     @classmethod
@@ -108,6 +109,8 @@ class PropertyModel:
     def add_property(self, property):
         try:
             connection = get_connection()
+            print(
+                f"This is the backend pid of the db connection: {connection.get_backend_pid()}")
             with connection.cursor() as cursor:
                 cursor.execute(
                     f"""INSERT INTO {os.getenv('PGSQL_TABLENAME')}(id, barrio, estrato, direccion, nivel_propiedad, antiguedad, area_propiedad, numero_habitaciones, garage, numero_banos, numero_pisos, tipo_cocina, owner) VALUES(%s,%s,%s,%s,%s,%s,
@@ -134,6 +137,7 @@ class PropertyModel:
             return affected_rows
 
         except Exception as ex:
+            print("Este es el error: ")
             raise Exception(ex)
 
     # patch method
