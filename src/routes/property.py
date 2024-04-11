@@ -89,7 +89,7 @@ def predict_price():
         return jsonify({"message": str(ex)}), 500
 
 
-@main.route("/health", method=["GET"])
+@main.route("/health", methods=["GET"])
 def healthcheck():
     return jsonify({"Everything is ok st this point"}), 200
 
