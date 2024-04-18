@@ -19,6 +19,7 @@ jobs:
       POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
       POSTGRES_ROOT_PASSWORD: ${{secrets.POSTGRES_ROOT_PASSWORD}}
       POSTGRES_PORT: ${{secrets.POSTGRES_PORT}}
+      ECR_REGISTRY: ${{secrets.ECR_REGISTRY}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11.3
@@ -68,11 +69,11 @@ jobs:
     - name: Build, Tag and Push the image to AWS ECR
       id: build-image
       env:
-        ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
+        ECR_REGISTRY: ${{secrets.ECR_REGISTRY}}
         ECR_REPOSITORY: test_env_homevalued
         IMAGE_TAG: latest
       run: |
-        docker-compose -f docker-compose.yaml up -d &&
+        docker-compose -f docker-compose.yaml up &&
         docker-compose push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 
