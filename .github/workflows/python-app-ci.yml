@@ -74,8 +74,7 @@ jobs:
         IMAGE_TAG: latest
       run: |
         docker-compose -f docker-compose.yaml up --no-start &&
-        docker tag carlosdan2/homevalued_api:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG &&
-        docker-compose push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker-compose push carlosdan2/homevalued_api:latest
 
 
     
