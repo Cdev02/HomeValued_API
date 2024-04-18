@@ -74,6 +74,7 @@ jobs:
         IMAGE_TAG: latest
       run: |
         docker-compose -f docker-compose.yaml up --no-start &&
+        docker images &&
         docker-compose push carlosdan2/homevalued_api:latest
 
 
