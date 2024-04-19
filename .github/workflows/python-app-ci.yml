@@ -73,8 +73,10 @@ jobs:
         ECR_REPOSITORY: test_env_homevalued
         IMAGE_TAG: latest
       run: |
-        docker-compose -f docker-compose.yaml up -d
-        docker-compose push api
+        docker-compose -f docker-compose.yaml up --no_start
+        docker images
+        docker tag carlosdan2/homevalued_api $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
 
     
