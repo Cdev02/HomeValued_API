@@ -19,6 +19,7 @@ jobs:
       POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
       POSTGRES_ROOT_PASSWORD: ${{secrets.POSTGRES_ROOT_PASSWORD}}
       POSTGRES_PORT: ${{secrets.POSTGRES_PORT}}
+      ECR_REGISTRY: ${{secrets.ECR_REGISTRY}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11.3
@@ -53,3 +54,30 @@ jobs:
         docker-compose -f docker-compose.yaml up -d
         echo ---Containers up—
         docker-compose push api
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        aws-region: us-east-2
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+    
+    - name: Build, Tag and Push the image to AWS ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{secrets.ECR_REGISTRY}}
+        ECR_REPOSITORY: test_env_homevalued
+        IMAGE_TAG: latest
+      run: |
+        docker-compose -f docker-compose.yaml up --no_start
+        docker images
+        docker tag carlosdan2/homevalued_api $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+
+    
+    

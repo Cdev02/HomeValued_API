@@ -50,7 +50,7 @@ def add_property():
     data = request.get_json()
     try:
         if validate_data(data["nivel_propiedad"], data["numero_banos"], data["numero_pisos"], data["antiguedad"], data["area_propiedad"],
-                         data["barrio"], data["direccion"], data["estrato"], data["tipo_cocina"], data["garage"]) == True:
+                         data["barrio"], data["direccion"], data["estrato"], data["tipo_cocina"], data["garage"]) is True:
             prop = Property(
                 data["id"],
                 data["barrio"],
@@ -70,7 +70,8 @@ def add_property():
             if affected_rows == 1:
                 return jsonify(prop.id)
             return jsonify({"message": "Error inserting property"}), 500
-        return jsonify({"message": "Error with the data types"}), 500
+        else:
+            raise ValueError("Some fields are not correct")
 
     except Exception as ex:
         return jsonify({"message": str(ex)}), 500
@@ -86,6 +87,11 @@ def predict_price():
         return jsonify({"El precio es: ": prediction[0]}), 400
     except Exception as ex:
         return jsonify({"message": str(ex)}), 500
+
+
+@main.route("/health", methods=["GET"])
+def healthcheck():
+    return jsonify({"Everything is ok st this point"}), 200
 
 
 # patch method
